@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caramel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+:root{
+    --primary: #fff;
+    --bg-color: rgb(5, 53, 61);
+    --bg-envelope-color: #f5edd1;
+    --envelope-tab: #ecdeb8;
+    --envelope-cover: rgb(227,28,35);
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --txt-color: #444;
+    --heart-color: rgb(252, 8, 231);
+  }
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-image: url('image/background1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    line-height: 80px;
+}
+.wrapper h1{
+    font-size: 40px;
+    font-family: 'Lobster', cursive;
+    letter-spacing: 1px;
+    color: #fff;
+}
+.wrapper .box-time{
+    position: relative;
+    display: flex;
+    line-height: normal;
+    width: 530px;
+    justify-content: space-between;
+}
+.box-time .time{
+    position: relative;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(216, 48, 48);
+    border-radius: 50%;
+    box-shadow: 0 0 20px #fff,
+            0 0 40px #fff;
+}
+.box-time .time::before{
+    position: absolute;
+    content: '';
+    width: 100px;
+    height: 100px;
+    border: 11px solid rgb(251, 255, 0);
+    box-shadow: inset 0 0 10px #333;
+    border-radius: 50%;
+}
+.box-time .time p{
+    font-size: 35px;
+    font-family: 'Caramel', cursive;
+}
+.box-time .time span{
+    padding: 10px 0px;
+    font-size: 25px;
+    font-family: 'Fredoka One', cursive;
+}
+
+.card{
+    transform-style: preserve-3d;
+    transition: all 2s ease;
+    width: 300px;
+    height: 500px;
+}
+
+.card-position{
+  position: absolute;
+  top:25%;
+}
+
+main{
+  display: grid;
+  grid-template-columns: 30% 30% 30% ;
+  grid-template-rows: 45% 45%;
+  column-gap: 5%;
+  row-gap: 10%;
+}
+
+.card:hover{
+    transform: rotateY(180deg);
+}
+
+.card .card-front{
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    backface-visibility: hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.card .card-front img{
+    width: 100%;
+    height: 100%;
+}
+
+.card .card-back{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left: 0;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+}
+ 
+
+.envelope-wrapper {
+    background: var(--bg-envelope-color);
+    box-shadow: 0 0 40px var(--shadow-color);
+  }
+  .envelope-wrapper > .envelope {
+    position: relative;
+  }
+  .envelope-wrapper > .envelope::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    border-top: 50px solid var(--envelope-tab);
+    border-right: 150px solid transparent;
+    border-left: 150px solid transparent;
+    transform-origin: top;
+    transition: all 0.5s ease-in-out 0.7s;
+  }
+  .envelope-wrapper > .envelope::after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    width: 0px;
+    height: 300px;
+    border-top: 50px solid transparent;
+    border-right: 150px solid var(--envelope-cover);
+    border-bottom: 100px solid var(--envelope-cover);
+    border-left: 150px solid var(--envelope-cover);
+  }
+  .envelope > .letter {
+    position: absolute;
+    right: 20%;
+    bottom: 0;
+    width: 54%;
+    height: 80%;
+    text-align: center;
+    transition: all 1s ease-in-out;
+    box-shadow: 0 0 5px var(--shadow-color);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .envelope > .letter img{
+    width: 100%;
+    height: 80%;
+  }
+
+  .heart {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    width: 15px;
+    height: 15px;
+    background: var(--heart-color);
+    z-index: 4;
+    transform: translate(-50%, -20%) rotate(45deg);
+    transition: transform 0.5s ease-in-out 1s;
+    box-shadow: 0 1px 6px var(--shadow-color);
+    cursor: pointer;
+  }
+  .heart:before, 
+  .heart:after {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: var(--heart-color);
+    border-radius: 50%;
+  }
+  .heart:before {
+    top: -7.5px;
+  }
+  .heart:after {
+    right: 7.5px;
+  }
+  .flap > .envelope:before {
+    transform: rotateX(180deg);
+    z-index: 0;
+  }
+  .flap > .envelope > .letter {
+    bottom: 150px;
+    transform: scale(1.5);
+    transition-delay: 1s;
+  }
+  .flap > .heart {
+    transform: rotate(90deg);
+    transition-delay: 0.4s;
+  }
+
+
+
+  
